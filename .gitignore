@@ -1,0 +1,25 @@
+# 构建产物
+bin/
+obj/
+
+# mod 运行时生成的调试目录 / 配置
+_debug/
+config.ini
+
+# 预览图的中间产物与留档
+preview_ai*.png
+preview_v1_vector.png
+_gen/
+_decompile/
+
+# 反编译与扫描用的临时数据
+_scan.json
+_harmony_summary.txt
+_harmony_versions.txt
+
+# 编辑器 / 系统
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
