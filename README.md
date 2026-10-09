@@ -13,7 +13,10 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](#许可)
 [![Release](https://img.shields.io/github/v/release/MingChous-jpg/StorageBooster?label=release&color=4A9E5C)](https://github.com/MingChous-jpg/StorageBooster/releases/latest)
 
-<img src="preview.png" alt="鸭窝扩容" width="256">
+<!-- 用绝对 URL 而不是相对路径：GitHub 会把外链图片改写到 camo.githubusercontent.com 代理，
+     而 README 相对路径图片走 raw.githubusercontent.com —— 该域名在国内网络经常不可达
+     （hosts 劫持 / SNI 封锁），camo 则由 GitHub 服务器代抓，任何能打开本页的人都能看到图。 -->
+<img src="https://raw.githubusercontent.com/MingChous-jpg/StorageBooster/main/preview.png" alt="鸭窝扩容" width="256">
 
 </div>
 
