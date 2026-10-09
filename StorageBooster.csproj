@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <AssemblyName>StorageBooster</AssemblyName>
+        <RootNamespace>StorageBooster</RootNamespace>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+        <!-- 改成你自己的游戏安装路径（包含 Duckov.exe 的目录）；也可用 -p:DuckovPath="..." 覆盖 -->
+        <DuckovPath Condition="'$(DuckovPath)' == ''">E:\SteamLibrary\steamapps\common\Escape from Duckov</DuckovPath>
+
+        <IsMac>false</IsMac>
+        <IsMac Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))'">true</IsMac>
+
+        <SubPath>\Duckov_Data\Managed\</SubPath>
+        <SubPath Condition="'$(IsMac)'">/Duckov.app/Contents/Resources/Data/Managed/</SubPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="$(DuckovPath)$(SubPath)TeamSoda.*">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(DuckovPath)$(SubPath)ItemStatsSystem.dll">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(DuckovPath)$(SubPath)Unity*">
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <!-- Harmony 未内置于游戏，mod 必须自带。
+         lib\0Harmony.dll（2.4.1）既作编译引用又作嵌入资源，
+         运行时由 HarmonyLoad.cs 从程序集内部加载，所以 mod 文件夹只需要 StorageBooster.dll 一个文件。 -->
+    <ItemGroup>
+        <Reference Include="lib\0Harmony.dll">
+            <Private>False</Private>
+        </Reference>
+        <EmbeddedResource Include="lib\0Harmony.dll"
+                          LogicalName="$(RootNamespace).0Harmony.dll"
+                          Visible="false" />
+    </ItemGroup>
+
+    <!-- 构建完自动把产物整理成可加载的 mod 文件夹：bin/Release/Mod/StorageBooster/ -->
+    <Target Name="PackModFolder" AfterTargets="Build">
+        <ItemGroup>
+            <ModPayload Include="$(TargetPath)" />
+            <ModPayload Include="$(MSBuildProjectDirectory)\info.ini" />
+            <ModPayload Include="$(MSBuildProjectDirectory)\preview.png" />
+        </ItemGroup>
+        <Copy SourceFiles="@(ModPayload)" DestinationFolder="$(OutputPath)Mod\$(AssemblyName)" SkipUnchangedFiles="false" />
+    </Target>
+
+</Project>
