@@ -11,6 +11,7 @@
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-blue)](#安装)
 [![Requires](https://img.shields.io/badge/requires-none%20(Harmony%20bundled)-brightgreen)](#安装)
 [![License](https://img.shields.io/badge/license-MIT-green)](#许可)
+[![Release](https://img.shields.io/github/v/release/MingChous-jpg/StorageBooster?label=release&color=4A9E5C)](https://github.com/MingChous-jpg/StorageBooster/releases/latest)
 
 <img src="preview.png" alt="鸭窝扩容" width="256">
 
@@ -32,6 +33,8 @@
 ---
 
 ## 安装
+
+**下载最新版：** [StorageBooster-1.1.0.zip](https://github.com/MingChous-jpg/StorageBooster/releases/download/v1.1.0/StorageBooster-1.1.0.zip)（解压即用，已内嵌 Harmony，无需其他依赖）
 
 **方式 A：Steam 创意工坊（推荐）**
 
